@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>FE App</title>
+    <link rel="stylesheet" href="styles.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="app">
+    <aside class="sidebar" id="sidebar">
+        <ul class="menu">
+            <li class="active" data-page="todo">
+                <img class="icon" src="img/todo.svg" alt="">
+                <span>ToDo</span>
+            </li>
+            <li data-page="analytics">
+                <img class="icon" src="img/analitics.svg" alt="">
+                <span>Analytics</span>
+            </li>
+            <li data-page="people">
+                <img class="icon" src="img/person.svg" alt="">
+                <span>People</span>
+            </li>
+            <li data-page="settings">
+                <img class="icon" src="img/settings.svg" alt="">
+                <span>Settings</span>
+            </li>
+        </ul>
+    </aside>
+
+    <main class="main">
+        <header class="topbar" id="topbar">
+            <span class="menu-toggle" id="menuToggle">☰</span>
+            <input type="text" placeholder="Search..."/>
+            <button id="themeToggle" class="toggle" aria-label="Toggle theme">
+                <span class="circle"></span>
+            </button>
+        </header>
+
+        <section id="loginPage" class="page active">
+            <form id="loginForm">
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Password" required minlength="6">
+                <button type="submit">Log in</button>
+            </form>
+        </section>
+
+        <section id="todoPage" class="page">
+            <div id="todo-section">
+                <div class="filters">
+                    <button data-filter="all">All</button>
+                    <button data-filter="completed">Completed</button>
+                    <button data-filter="pending">Pending</button>
+                </div>
+                <div class="categories">
+                    <div class="category" data-category="design">
+                        <h2>Design</h2>
+                    </div>
+                    <div class="category" data-category="personal">
+                        <h2>Personal</h2>
+                    </div>
+                    <div class="category" data-category="house">
+                        <h2>House</h2>
+                    </div>
+                </div>
+                <div class="add-task">
+                    <input type="text" id="newTask" placeholder="Write a task...">
+                    <button id="addBtn">Add</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="analyticsPage" class="page">
+            <h2>Analytics</h2>
+            <div class="analytics-toggle">
+                <button id="showCharts">Charts</button>
+                <button id="showTables">Tables</button>
+            </div>
+            <div id="chartsContainer" class="chart-container">
+                <canvas id="salesByDay"></canvas>
+                <canvas id="leadsByDay"></canvas>
+                <canvas id="repeatPurchases"></canvas>
+                <canvas id="revenueByMonth"></canvas>
+                <canvas id="salesByManager"></canvas>
+            </div>
+            <div id="tablesContainer" style="display:none;">
+                <h3>Дохід по менеджерах</h3>
+                <table id="managerTable" border="1"></table>
+                <h3>Товари з низьким обігом</h3>
+                <table id="lowTurnoverTable" border="1"></table>
+            </div>
+        </section>
+
+        <section id="peoplePage" class="page">
+            <h2>People</h2>
+            <div id="peopleContainer" class="people-container"></div>
+        </section>
+
+        <section id="settingsPage" class="page">
+            <h2>Settings</h2>
+            <div class="settings-section">
+                <h3>Account</h3>
+                <p id="userEmail">You are logged in as: <strong></strong></p>
+                <button id="logoutBtn">Log out</button>
+            </div>
+            <div class="settings-section">
+                <h3>Appearance</h3>
+                <button id="toggleThemeBtn">Toggle Theme</button>
+            </div>
+            <div class="settings-section">
+                <h3>Data</h3>
+                <button id="clearDataBtn">Clear Local Data</button>
+            </div>
+        </section>
+    </main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
